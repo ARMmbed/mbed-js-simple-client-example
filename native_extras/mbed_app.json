@@ -1,0 +1,47 @@
+{
+    "config": {
+        "network-interface":{
+            "help": "options are ETHERNET,WIFI_ESP8266,MESH_LOWPAN_ND,MESH_THREAD",
+            "value": "ETHERNET"
+        },
+        "esp8266-tx": {
+            "help": "Pin used as TX (connects to ESP8266 RX)",
+            "value": "D1"
+        },
+        "esp8266-rx": {
+            "help": "Pin used as RX (connects to ESP8266 TX)",
+            "value": "D0"
+        },
+        "esp8266-ssid": {
+            "value": "\"SSID\""
+        },
+        "esp8266-password": {
+            "value": "\"Password\""
+        },
+        "esp8266-debug": {
+            "value": true
+        },
+        "button": {
+            "help": "Pin which you'll use as button (can be overriden per target below)",
+            "value": "BUTTON1"
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "target.features_add": ["IPV4", "IPV6", "COMMON_PAL"]
+        },
+        "K64F": {
+            "button": "SW2"
+        },
+        "HEXIWEAR": {
+            "button": "PTA12",
+            "esp8266-tx": "PTD3",
+            "esp8266-rx": "PTD2"
+        },
+        "NUCLEO_F401RE": {
+            "button": "USER_BUTTON",
+            "esp8266-tx": "D8",
+            "esp8266-rx": "D2"
+        }
+    }
+}
